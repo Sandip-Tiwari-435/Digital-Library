@@ -11,6 +11,3 @@ The ideal project would have the following components -
 - A Super Admin dashboard will be necessary for set up and management.
 - Users will be able to connect with other users and form their network.
 - An inbuilt document editor must be incorporated to create or edit documents. The document editor must have spell check and grammar correction features.
-
-
-## NOTE - Nominate two person from your group to review the codes before pushing into the main branch.

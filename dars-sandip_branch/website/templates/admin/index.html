@@ -1,0 +1,26 @@
+{% extends 'admin/master.html' %}
+
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+{% block body %}
+{{ super() }}
+
+{% if current_user.email=='admin0422@gmail.com' %}
+<br>
+
+<p style="font-size: 30px;font-weight: bold;">You have no unread messages yet, sergeant.</p>
+<a class="btn btn-secondary" id="home" href="/">Go Back To Main Page</a>
+
+{% else %}
+<div class="card text-center">
+    <div class="card-header" style="font-size: 100px;font-weight:900">
+        Warning!
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">You Are Not An Admin!</h5>
+        <p class="card-text">Contact <a class="link" id="" href="mailto:digitallibrary7@gmail.com">Digital Library</a>
+            for admin authorization.</p>
+        <a href="/" class="btn btn-primary" style="font-size: 30px;">Back</a>
+    </div>
+</div>
+{% endif %}
+{% endblock body %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Friends{% endblock %}
+
+{% block content %}
+
+<indent>
+
+<div class="p-5 bordera mt-5 container">
+    <div class="row">
+        {%if friends%}
+        <div class="col">
+            <div class="wrapperOfHeader">
+                <h1>{{user.firstName}}'s Friend List</h1>
+                
+            </div>
+            <ul>
+                {% for file in friends %}
+                <hr>
+                <div class="wrapperOfHeader">
+                <li>
+
+                    {% set theFriend = file.split("_")[1] %}
+                    {% set emailFriend=file.split("_")[0] %}
+                    <a class="m-3 btn btn-info" href="search-user-friend/{{emailFriend}}">{{theFriend}}</a><br>
+
+                </li>
+                
+                <div class="friendStat">
+                    <a style="color: white;font-size:larger;font-weight:bold;" href="/remove-friend-html/{{emailFriend}}/{{theFriend}}"><p id="stari" style="margin: auto;">Unfriend?</p></a>
+                </div>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+        <h5>{{user.firstName}}'s friendlist is empty!</h5>
+        {% endif %}
+    </div>
+</div>
+
+</indent>
+{% endblock %}

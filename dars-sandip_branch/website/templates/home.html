@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<h2 align="center">Hello {{user.firstName}}!</h2>
+<form class="w-50 mt-4 border-home border p-4 center mx-auto" method="POST" action="/search-user">
+    <div class="form-group">
+        <label for="email">Find someone!</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter user's email">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+
+</form>
+{% endblock %} 

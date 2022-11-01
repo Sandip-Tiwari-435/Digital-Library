@@ -1,0 +1,27 @@
+*************** Raunak Branch ***************
+
+##### FLASK APP #####
+
+1) Created User sign-in, sign-up, logout process (user authentication).
+
+    Also added Google Authentication as an alternative.
+
+    Note: working with two database (Sqlalchemy) ....
+            1) for normal authentication
+            2) for google authentication
+
+2) [15/04/22]:
+
+    Added Following tasks in the codes:
+    `` Users can upload their documents (of any file format) in their profile.
+    `` Each user will create their own directory for saving their documents(Public/Private mode).
+    `` Users will be able to share/download publicly listed documents from other users profile.
+
+3) [18/04/22]:
+
+    Fixed authentication Bug.
+
+    Added:
+    `` Admin DashBoard:
+        - authorized admin can see all the users along with their['unique id','email','dateCreated','firstName','lastName - BUG HERE']
+        - authorized admin can delete any user account.

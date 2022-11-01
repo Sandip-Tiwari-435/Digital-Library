@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Upload{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h1 align="center">Upload a file</h1>
+            <hr>
+
+            <div class="center mb-5">
+                <form class="w-65 border-home border p-4 center mx-auto" method="POST" action="/upload-file" enctype="multipart/form-data">
+                    <input type="file" name="file" class="form-control" id="formFile" oninput="filesize(this);">
+                    <br>
+                    <label for="directory">Choose Folder:</label>
+                    <select name="directory" id="directory" class="form-select">
+                        <option value="private">Private</option>
+                        <option value="public">Public</option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <a href="/create-doc"><button type="button" class="btn btn-primary">Open Editor</button></a>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        {%if files1%}
+        <div class="col">
+            <h2>Private Files</h2>
+            <ul>
+                {% for file in files1 %}
+                <li>
+                    <a class="btn btn-info" href="get-file-private/{{file}}">{{file}}</a><br>
+                    <a class="btn btn-warning btn-sm" href="delete-file-private/{{file}}">delete</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {%if files2%}
+        <div class="col">
+            <h2>Public Files</h2>
+            <ul>
+                {% for file in files2 %}
+                <li>
+                    <a class="btn btn-info" href="get-file-public/{{file}}">{{file}}</a><br>
+                    <a class="btn btn-warning btn-sm" href="delete-file-public/{{file}}">delete</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+
+    function filesize(elem)
+    {
+        document.cookie = `filesize=${elem.files[0].size}`
+    }
+
+</script>
+{% endblock %}

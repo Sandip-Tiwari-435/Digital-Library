@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Visit User{% endblock %}
+
+{% block content %}
+
+<div class="p-5 bordera mt-5 container">
+    <div class="row">
+        {%if files2%}
+        <div class="col">
+            <div class="wrapperOfHeader">
+                <h1>{{visited_user.firstName}}'s Files</h1>
+                <div class="friendStat">
+                    {% if user.email!=email %}
+                        {% if friendStat==-1 %}
+                        <a style="font-size:larger;font-weight:bold;color: white;" href="/register-friend/{{email}}/{{visited_user.firstName}}"><p id="stari" style="margin: auto;">Make {{visited_user.firstName}} your friend?</p></a>
+                        {% else %}
+                        <a style="color: white;font-size:larger;font-weight:bold;" href="/remove-friend/{{email}}/{{visited_user.firstName}}"><p id="stari" style="margin: auto;">Unfriend?</p></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <ul>
+                {% for file in files2 %}
+                <li>
+                    <hr>
+                    <a class="m-3 btn btn-info" href="get-user-file/{{email}}/{{file}}">{{file}}</a><br>
+                </li>
+                
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+        <div class="col">
+            <div class="wrapperOfHeader">
+                <h5 style="margin: auto 0;">{{visited_user.firstName}}'s directory is empty!</h5>
+                <div class="friendStat">
+                    {% if friendStat==-1 %}
+                    <a style="color: white;font-weight:bold;font-size:larger;" href="/register-friend/{{email}}/{{visited_user.firstName}}"><p id="stari" style="margin: auto;">Make {{visited_user.firstName}} your friend?</p></a>
+
+                    {% else %}
+                    <a style="color: white;font-weight:bold;font-size:larger;" href="/remove-friend/{{email}}/{{visited_user.firstName}}"><p id="stari" style="margin: auto;">Unfriend?</p></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
